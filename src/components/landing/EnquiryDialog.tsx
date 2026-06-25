@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { submitEnquiry } from "../../server/enquiry";
 
 interface Props {
   open: boolean;
@@ -43,6 +44,7 @@ const EMPTY: FormState = {
 
 export function EnquiryDialog({ open, onClose }: Props) {
   const [form, setForm] = useState<FormState>(EMPTY);
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -53,6 +55,7 @@ export function EnquiryDialog({ open, onClose }: Props) {
       setForm(EMPTY);
       setErrors({});
       setSubmitted(false);
+      setLoading(false);
     }
   }, [open]);
 
@@ -68,10 +71,10 @@ export function EnquiryDialog({ open, onClose }: Props) {
 
   // Close on Escape
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape" && !loading) onClose(); };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [onClose]);
+  }, [onClose, loading]);
 
   const set = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -84,11 +87,21 @@ export function EnquiryDialog({ open, onClose }: Props) {
     return e;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
-    setSubmitted(true);
+
+    setLoading(true);
+    try {
+      await submitEnquiry({ data: form });
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Submission failed:", error);
+      alert("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!open) return null;
@@ -221,9 +234,10 @@ export function EnquiryDialog({ open, onClose }: Props) {
                 {/* Submit */}
                 <button
                   type="submit"
-                  className="w-full rounded-full bg-[oklch(0.18_0.01_80)] text-white py-3.5 text-sm font-medium tracking-wide hover:bg-[oklch(0.72_0.13_70)] hover:text-[oklch(0.16_0.008_80)] transition-colors duration-300"
+                  disabled={loading}
+                  className="w-full rounded-full bg-[oklch(0.18_0.01_80)] text-white py-3.5 text-sm font-medium tracking-wide hover:bg-[oklch(0.72_0.13_70)] hover:text-[oklch(0.16_0.008_80)] transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Submit Enquiry →
+                  {loading ? "Sending..." : "Submit Enquiry →"}
                 </button>
 
                 <p className="text-center text-[10px] text-[oklch(0.65_0.012_80)]">
