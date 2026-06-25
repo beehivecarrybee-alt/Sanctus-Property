@@ -1,0 +1,12 @@
+[build]
+  command = "npm run build"
+  publish = ".output/public"
+
+[build.environment]
+  NITRO_PRESET = "netlify-edge"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/edge-functions/server"
+  status = 200
+  force = true
