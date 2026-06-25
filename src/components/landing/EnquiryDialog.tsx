@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { submitEnquiry } from "@/api/enquiry";
 
 interface Props {
   open: boolean;
@@ -93,21 +94,11 @@ export function EnquiryDialog({ open, onClose }: Props) {
 
     setLoading(true);
     try {
-      const response = await fetch("/api/enquiry", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "Failed to send enquiry");
-      }
-      
+      await submitEnquiry({ data: form });
       setSubmitted(true);
     } catch (error: any) {
       console.error("Submission failed:", error);
-      alert(error.message || "Something went wrong. Please try again later.");
+      alert(error?.message || "Something went wrong. Please try again later.");
     } finally {
       setLoading(false);
     }

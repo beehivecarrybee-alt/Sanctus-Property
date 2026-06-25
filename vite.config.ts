@@ -13,6 +13,10 @@ export default defineConfig({
     server: { entry: "server" },
   },
   nitro: {
-    preset: process.env.NITRO_PRESET,
+    // Deploy target = Vercel (Node serverless functions, NOT edge).
+    // The Lovable wrapper defaults to the "cloudflare" (edge) preset when
+    // NITRO_PRESET is unset — edge runtimes can't run nodemailer/SMTP, so we
+    // pin "vercel" here. Override via NITRO_PRESET env if ever needed.
+    preset: process.env.NITRO_PRESET || "vercel",
   },
 });

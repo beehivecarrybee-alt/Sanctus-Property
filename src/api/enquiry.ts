@@ -1,5 +1,3 @@
-"use server";
-
 import { createServerFn } from "@tanstack/react-start";
 
 export type EnquiryData = {
@@ -11,8 +9,16 @@ export type EnquiryData = {
   message: string;
 };
 
+// Where enquiry notifications are delivered.
+const ADMIN_RECIPIENTS = "ravishangar130@gmail.com, beehivecarrybee@gmail.com";
+
+// Server function invoked directly from the client:
+//   await submitEnquiry({ data: form })
+// The .handler body runs server-only, so the nodemailer import below is
+// tree-shaken out of the client bundle. Requires a Node runtime to send
+// (Gmail SMTP over nodemailer does not run on edge runtimes).
 export const submitEnquiry = createServerFn({ method: "POST" })
-  .validator((data: EnquiryData) => data)
+  .inputValidator((data: EnquiryData) => data)
   .handler(async ({ data }) => {
     const user = process.env.GMAIL_USER;
     const pass = process.env.GMAIL_APP_PASSWORD;
@@ -21,7 +27,7 @@ export const submitEnquiry = createServerFn({ method: "POST" })
       throw new Error("Email service is not configured");
     }
 
-    // Dynamic import inside handler to avoid client bundling
+    // Dynamic import keeps nodemailer out of the client bundle.
     const { default: nodemailer } = await import("nodemailer");
 
     const transporter = nodemailer.createTransport({
@@ -30,24 +36,28 @@ export const submitEnquiry = createServerFn({ method: "POST" })
     });
 
     try {
-      await Promise.all([
-        transporter.sendMail({
-          from: `"Sanctus Property Automation" <${user}>`,
-          to: "ravishangar130@gmail.com, beehivecarrybee@gmail.com",
-          subject: `New Enquiry Alert: ${data.name}`,
-          text: `New enquiry details:\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone}\nProperty: ${data.propertyType}\nBudget: ${data.budget}\nMessage: ${data.message}`,
-        }),
-        transporter.sendMail({
-          from: `"Sanctus Property" <${user}>`,
-          to: data.email,
-          subject: `Thank you for your enquiry, ${data.name}`,
-          text: `Dear ${data.name},\n\nThank you for reaching out. We have received your enquiry and will get back to you soon.`,
-        }),
-      ]);
+      await transporter.sendMail({
+        from: `"Sanctus Property Website" <${user}>`,
+        to: ADMIN_RECIPIENTS,
+        replyTo: data.email,
+        subject: `New Enquiry: ${data.name}`,
+        text: [
+          "New enquiry received from the website:",
+          "",
+          `Name:          ${data.name}`,
+          `Email:         ${data.email}`,
+          `Phone:         ${data.phone}`,
+          `Property Type: ${data.propertyType || "—"}`,
+          `Budget:        ${data.budget || "—"}`,
+          "",
+          "Message / Requirement:",
+          data.message || "—",
+        ].join("\n"),
+      });
 
       return { success: true };
     } catch (error) {
-      console.error("Email failed:", error);
-      throw new Error("Failed to send email");
+      console.error("Enquiry email failed:", error);
+      throw new Error("Failed to send enquiry. Please try again later.");
     }
   });
