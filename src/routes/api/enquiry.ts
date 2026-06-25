@@ -9,11 +9,18 @@ export default eventHandler(async (event) => {
   const pass = process.env.GMAIL_APP_PASSWORD;
 
   if (!user || !pass) {
-    throw new Error("Email service not configured");
+    console.error("CRITICAL: GMAIL_USER or GMAIL_APP_PASSWORD is not defined in environment variables.");
+    return { 
+      success: false, 
+      error: "server_config_missing",
+      message: "Server is not configured to send emails. Please add environment variables." 
+    };
   }
 
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // Use SSL
     auth: { user, pass },
   });
 

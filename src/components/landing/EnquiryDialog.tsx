@@ -99,12 +99,16 @@ export function EnquiryDialog({ open, onClose }: Props) {
         body: JSON.stringify(form),
       });
 
-      if (!response.ok) throw new Error("Failed to send enquiry");
+      const result = await response.json();
+
+      if (!response.ok || result.success === false) {
+        throw new Error(result.message || "Failed to send enquiry");
+      }
       
       setSubmitted(true);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Submission failed:", error);
-      alert("Something went wrong. Please try again later.");
+      alert(error.message || "Something went wrong. Please try again later.");
     } finally {
       setLoading(false);
     }
