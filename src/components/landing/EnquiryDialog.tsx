@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { submitEnquiry } from "../../server/enquiry";
 
 interface Props {
   open: boolean;
@@ -94,7 +93,14 @@ export function EnquiryDialog({ open, onClose }: Props) {
 
     setLoading(true);
     try {
-      await submitEnquiry({ data: form });
+      const response = await fetch("/api/enquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) throw new Error("Failed to send enquiry");
+      
       setSubmitted(true);
     } catch (error) {
       console.error("Submission failed:", error);
