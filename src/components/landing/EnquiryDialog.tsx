@@ -99,10 +99,9 @@ export function EnquiryDialog({ open, onClose }: Props) {
         body: JSON.stringify(form),
       });
 
-      const result = await response.json();
-
-      if (!response.ok || result.success === false) {
-        throw new Error(result.message || "Failed to send enquiry");
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || "Failed to send enquiry");
       }
       
       setSubmitted(true);
