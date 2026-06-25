@@ -69,35 +69,35 @@ export function Hero({ images }: Props) {
   return (
     <section ref={sectionRef} id="home" className="relative" style={{ height: "350vh" }}>
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <div className="mx-auto max-w-7xl h-full px-6 lg:px-10 grid md:grid-cols-12 gap-10 items-center pt-24">
+        <div className="mx-auto max-w-7xl h-full px-6 lg:px-10 grid md:grid-cols-12 gap-8 items-start md:items-center pt-20 md:pt-24 pb-8">
 
           {/* Copy */}
           <div className="md:col-span-5 z-10 order-2 md:order-1 text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-3 text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6">
-              <span className="h-px w-8 bg-[var(--color-gold)]" />
+            <div className="flex items-center justify-center md:justify-start gap-3 text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4">
+              <span className="h-px w-6 bg-[var(--color-gold)]" />
               Est. 2026 · Coimbatore
             </div>
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95]">
+            <h1 className="font-display text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95]">
               Spaces that<br />
               <em className="italic text-[var(--color-gold)]">inspire</em> and<br />
               endure.
             </h1>
-            <p className="mt-8 text-base md:text-lg text-muted-foreground max-w-md mx-auto md:mx-0 leading-relaxed">
+            <p className="mt-6 text-sm md:text-lg text-muted-foreground max-w-md mx-auto md:mx-0 leading-relaxed">
               Sanctus Property designs, develops and delivers residential and commercial
               landmarks — from foundation to finishing detail.
             </p>
-            <div className="mt-10 flex flex-wrap items-center justify-center md:justify-start gap-4">
-              <a href="#projects" className="inline-flex items-center gap-3 rounded-full bg-foreground text-background px-7 py-3.5 text-sm hover:bg-[var(--color-gold)] hover:text-ink transition-colors">
+            <div className="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3">
+              <a href="#projects" className="inline-flex items-center gap-3 rounded-full bg-foreground text-background px-6 py-3 text-sm hover:bg-[var(--color-gold)] hover:text-ink transition-colors">
                 View portfolio <span aria-hidden>→</span>
               </a>
               <a href="#contact" className="inline-flex items-center gap-3 text-sm hover:text-[var(--color-gold)] transition-colors">
                 Start your project <span aria-hidden>↗</span>
               </a>
             </div>
-            <div className="mt-16 flex items-center justify-center md:justify-start gap-10 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              <div><div className="font-display text-2xl text-foreground normal-case tracking-normal">120+</div>projects</div>
-              <div><div className="font-display text-2xl text-foreground normal-case tracking-normal">2026</div>Launch</div>
-              <div><div className="font-display text-2xl text-foreground normal-case tracking-normal">A+</div>certified</div>
+            <div className="mt-10 flex items-center justify-center md:justify-start gap-8 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <div><div className="font-display text-xl md:text-2xl text-foreground normal-case tracking-normal">120+</div>projects</div>
+              <div><div className="font-display text-xl md:text-2xl text-foreground normal-case tracking-normal">2026</div>Launch</div>
+              <div><div className="font-display text-xl md:text-2xl text-foreground normal-case tracking-normal">A+</div>certified</div>
             </div>
           </div>
 
