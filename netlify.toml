@@ -10,4 +10,3 @@
   from = "/*"
   to = "/.netlify/edge-functions/server"
   status = 200
-  force = true
