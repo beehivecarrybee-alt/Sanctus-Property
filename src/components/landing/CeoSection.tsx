@@ -47,7 +47,7 @@ export function CeoSection() {
           >
             <img
               src={ceoPortrait}
-              alt="Mr. Rajiv Shankar — Founder & CEO, Sanctus Property"
+              alt="Founder & CEO, Sanctus Property"
               style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
             />
             {/* Gold accent bar */}
@@ -75,15 +75,6 @@ export function CeoSection() {
               }}
             >
               Founder &amp; Chief Executive Officer
-            </div>
-            <div
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "1.4rem",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Mr. Rajiv Shankar
             </div>
             <a
               href="tel:+919629873298"

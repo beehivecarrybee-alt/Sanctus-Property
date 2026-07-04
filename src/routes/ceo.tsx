@@ -5,11 +5,11 @@ import ceoPortrait from "@/assets/photo/c2.png";
 export const Route = createFileRoute("/ceo")({
   head: () => ({
     meta: [
-      { title: "Mr. Rajiv Shankar — CEO | Sanctus Property" },
+      { title: "Founder & CEO | Sanctus Property" },
       {
         name: "description",
         content:
-          "Meet the visionary behind Sanctus Property — Mr. Rajiv Shankar, Founder & CEO. Learn about his philosophy, milestones, and the mission driving Sanctus Property.",
+          "Meet the visionary behind Sanctus Property — our Founder & CEO. Learn about his philosophy, milestones, and the mission driving Sanctus Property.",
       },
     ],
     links: [
@@ -193,7 +193,7 @@ function CeoPage() {
               {/* Decorative silhouette / avatar */}
               <img
                 src={ceoPortrait}
-                alt="Mr. Rajiv Shankar — Founder & CEO, Sanctus Property"
+                alt="Founder & CEO, Sanctus Property"
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
               />
 
@@ -223,15 +223,6 @@ function CeoPage() {
                 }}
               >
                 Founder &amp; Chief Executive Officer
-              </div>
-              <div
-                style={{
-                  fontFamily: "var(--font-display)",
-                  fontSize: "1.5rem",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                Mr. Rajiv Shankar
               </div>
             </div>
           </div>
@@ -488,7 +479,7 @@ function CeoPage() {
               color: "var(--color-muted-foreground)",
             }}
           >
-            — Mr. Rajiv Shankar, CEO, Sanctus Property
+            — Founder &amp; CEO, Sanctus Property
           </footer>
         </blockquote>
       </section>
