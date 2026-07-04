@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import ceoPortrait from "@/assets/photo/c1.png";
+import ceoPortrait from "@/assets/photo/c2.png";
 
 export function CeoSection() {
   return (

@@ -64,6 +64,12 @@
 
 @layer base {
   * { border-color: var(--color-border); }
+  html, body {
+    /* clip (not hidden) avoids forcing the other axis to auto per the CSS
+       overflow spec, which would otherwise turn body into its own scroll
+       container and break position:sticky elements like the Hero canvas. */
+    overflow-x: clip;
+  }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);

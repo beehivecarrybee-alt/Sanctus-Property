@@ -69,7 +69,7 @@ export function Hero({ images }: Props) {
   return (
     <section ref={sectionRef} id="home" className="relative" style={{ height: "350vh" }}>
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <div className="mx-auto max-w-7xl h-full px-6 lg:px-10 grid md:grid-cols-12 gap-8 items-start md:items-center pt-20 md:pt-24 pb-8">
+        <div className="mx-auto max-w-7xl h-full px-6 lg:px-10 grid md:grid-cols-12 gap-8 content-start items-start md:items-center pt-20 md:pt-24 pb-8">
 
           {/* Copy */}
           <div className="md:col-span-5 z-10 order-2 md:order-1 text-center md:text-left">

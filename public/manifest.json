@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "name": "Sanctus Property OPC Pvt Ltd",
+  "short_name": "Sanctus Property",
+  "description": "Sanctus Property designs, develops and delivers residential and commercial landmarks.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "background_color": "#FBF9F5",
+  "theme_color": "#17130F",
+  "categories": ["business", "real estate"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

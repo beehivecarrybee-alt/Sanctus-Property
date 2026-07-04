@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>You're offline — Sanctus Property</title>
+<style>
+  html, body {
+    margin: 0; height: 100%;
+    background: #FBF9F5;
+    color: #17130F;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .wrap { max-width: 360px; padding: 2rem; }
+  h1 { font-size: 1.5rem; margin: 0 0 0.75rem; letter-spacing: -0.02em; }
+  p { margin: 0 0 1.5rem; color: #6b645b; line-height: 1.6; font-size: 0.95rem; }
+  button {
+    border: none; border-radius: 9999px; padding: 0.75rem 2rem;
+    font-size: 0.9rem; font-weight: 500; cursor: pointer;
+    background: #C9883A; color: #17130F;
+  }
+  button:hover { opacity: 0.85; }
+  .dot { color: #C9883A; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>You&rsquo;re offline<span class="dot">.</span></h1>
+    <p>Check your connection and try again.</p>
+    <button onclick="location.reload()">Retry</button>
+  </div>
+</body>
+</html>

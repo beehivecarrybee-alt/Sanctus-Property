@@ -102,7 +102,7 @@ export function Projects() {
                     src={p.img}
                     alt={p.title}
                     loading="lazy"
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.3em] text-white/90 bg-black/30 backdrop-blur px-3 py-1.5 rounded-full">
                     {String(i + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
@@ -188,7 +188,7 @@ export function ProjectsMobile() {
         {PROJECTS.map((p, i) => (
           <article key={p.title}>
             <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-muted">
-              <img src={p.img} alt={p.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+              <img src={p.img} alt={p.title} loading="lazy" className="absolute inset-0 h-full w-full object-contain" />
               <div className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.3em] text-white/90 bg-black/30 backdrop-blur px-3 py-1.5 rounded-full">
                 {String(i + 1).padStart(2, "0")}
               </div>

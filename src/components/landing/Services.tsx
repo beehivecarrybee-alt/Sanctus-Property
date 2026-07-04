@@ -1,21 +1,45 @@
 const SERVICES = [
   {
     n: "01",
-    title: "Residential",
+    title: "Residential Construction",
     body: "Custom homes, penthouses and boutique apartment buildings designed around how people actually live.",
     points: ["Architectural design", "Interior development", "Turnkey delivery"],
   },
   {
     n: "02",
-    title: "Commercial",
+    title: "Commercial Construction",
     body: "Offices, hospitality and retail spaces engineered for performance, brand and longevity.",
     points: ["Mixed-use towers", "Hospitality fit-out", "Workplace design"],
   },
   {
     n: "03",
-    title: "Construction",
-    body: "Full general contracting with our own crews — from excavation through final handover.",
-    points: ["General contracting", "Project management", "Renovation & retrofit"],
+    title: "Residential Plots",
+    body: "Approved residential plots in prime locations, ready for you to build the home you've always wanted.",
+    points: ["Approved layouts", "Clear title & documentation", "Site development"],
+  },
+  {
+    n: "04",
+    title: "Commercial Plots",
+    body: "Strategically located commercial plots suited for retail, office and mixed-use development.",
+    points: ["High-visibility locations", "Flexible plot sizes", "Investment-ready titles"],
+  },
+  {
+    n: "05",
+    title: "Ready to Move Villas",
+    body: "Fully finished villas, inspected and handover-ready — move in without waiting through a construction cycle.",
+    points: ["Quality-checked finish", "Immediate possession", "Complete documentation"],
+  },
+  {
+    n: "06",
+    title: "Resale Villas",
+    body: "Verified pre-owned villas with transparent history, fair valuation and a smooth transfer process.",
+    points: ["Verified ownership", "Fair market valuation", "End-to-end transfer support"],
+  },
+  {
+    n: "07",
+    title: "Electrical & Plumbing",
+    body: "In-house electrical and plumbing teams for commercial and residential projects — from rough-in to final fittings.",
+    points: ["Wiring & panel work", "Plumbing & sanitary fit-out", "Maintenance & repairs"],
   },
 ];
 
@@ -30,7 +54,7 @@ export function Services() {
               What we do
             </div>
             <h2 className="font-display text-4xl md:text-6xl max-w-2xl leading-[1.02]">
-              Three disciplines.<br />
+              Every discipline.<br />
               <em className="italic text-[var(--color-gold)]">One studio.</em>
             </h2>
           </div>
@@ -40,7 +64,7 @@ export function Services() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden border border-border">
           {SERVICES.map((s) => (
             <article key={s.n} className="bg-background p-8 md:p-10 group hover:bg-secondary transition-colors duration-500">
               <div className="flex items-baseline justify-between mb-12">
