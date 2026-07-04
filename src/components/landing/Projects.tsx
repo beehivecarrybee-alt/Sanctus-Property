@@ -1,34 +1,25 @@
+import p1 from "@/assets/photo/1.png";
+import p2 from "@/assets/photo/2.png";
+import p3 from "@/assets/photo/3.png";
+import p4 from "@/assets/photo/4.png";
+import p5 from "@/assets/photo/5.png";
+import p6 from "@/assets/photo/6.png";
+import p7 from "@/assets/photo/7.png";
+import p8 from "@/assets/photo/8.png";
+import p9 from "@/assets/photo/9.png";
+import p10 from "@/assets/photo/10.png";
+
 const PROJECTS = [
-  {
-    title: "Sample Residence A",
-    type: "Residential · Sample City",
-    year: "2026",
-    img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1400&q=80",
-  },
-  {
-    title: "Sample Commercial B",
-    type: "Mixed-use · Sample District",
-    year: "2026",
-    img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=1400&q=80",
-  },
-  {
-    title: "Sample Pavilion C",
-    type: "Hospitality · Sample Town",
-    year: "2026",
-    img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80",
-  },
-  {
-    title: "Sample Workshop D",
-    type: "Adaptive Reuse · Sample Area",
-    year: "2026",
-    img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=80",
-  },
-  {
-    title: "Sample Estate E",
-    type: "Private Home · Sample Region",
-    year: "2026",
-    img: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1400&q=80",
-  },
+  { title: "Signature Elevation Villa", type: "Residential · Designer Elevation", year: "2025", img: p4 },
+  { title: "Twin-Tone Family Villa", type: "Residential · Independent House", year: "2024", img: p3 },
+  { title: "Urban Designer Home", type: "Residential · Multi-Storey", year: "2025", img: p8 },
+  { title: "Louvre Facade Residence", type: "Residential · Under Construction", year: "2026", img: p5 },
+  { title: "Compact Modern Home", type: "Residential · Independent House", year: "2024", img: p6 },
+  { title: "Housewarming Handover", type: "Residential · Completed & Delivered", year: "2026", img: p2 },
+  { title: "Fitness Studio Fit-Out", type: "Commercial · Interior", year: "2026", img: p1 },
+  { title: "Community Landmark Build", type: "Institutional · Completed", year: "2025", img: p10 },
+  { title: "G Square Builder Partner", type: "Recognition · Partnership", year: "2026", img: p7 },
+  { title: "Builder Partnership Meet", type: "Recognition · G Square Group", year: "2026", img: p9 },
 ];
 
 import { useEffect, useRef } from "react";
@@ -89,7 +80,7 @@ export function Projects() {
               Selected work
             </div>
             <h2 className="font-display text-4xl md:text-6xl leading-[1.02]">
-              Sample <em className="italic text-[var(--color-gold)]">portfolio</em>
+              Our <em className="italic text-[var(--color-gold)]">portfolio</em>
             </h2>
           </div>
           <a href="#contact" className="text-sm hover:text-[var(--color-gold)] transition">
@@ -190,7 +181,7 @@ export function ProjectsMobile() {
           <span className="h-px w-8 bg-[var(--color-gold)]" />
         </div>
         <h2 className="font-display text-4xl leading-[1.02]">
-          Sample <em className="italic text-[var(--color-gold)]">portfolio</em>
+          Our <em className="italic text-[var(--color-gold)]">portfolio</em>
         </h2>
       </div>
       <div className="space-y-10">

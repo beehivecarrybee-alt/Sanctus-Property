@@ -1,4 +1,4 @@
-import ecLogo from "@/assets/logofor E and C_.jpg";
+import ecLogo from "@/assets/logofor E and C_.png";
 
 export function Footer() {
   return (
@@ -34,7 +34,8 @@ export function Footer() {
           <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Contact</div>
           <p className="text-sm leading-relaxed">
             Coimbatore,<br />Tamil Nadu, India<br />
-            <a href="tel:+917845840069" className="hover:text-[var(--color-gold)] transition-colors">+91 78458 40069</a>
+            <a href="tel:+917845840069" className="hover:text-[var(--color-gold)] transition-colors">+91 78458 40069</a><br />
+            <a href="mailto:sanctuspropertyopc@gmail.com" className="hover:text-[var(--color-gold)] transition-colors">sanctuspropertyopc@gmail.com</a>
           </p>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import loadingGif from "@/assets/loading page  logo.gif";
+import loadingGif from "@/assets/logofor E and C_.png";
 
 interface Props {
   progress: number;

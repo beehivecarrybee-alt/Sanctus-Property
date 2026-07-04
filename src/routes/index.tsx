@@ -8,6 +8,7 @@ import { Services } from "@/components/landing/Services";
 import { Projects, ProjectsMobile } from "@/components/landing/Projects";
 import { WhyChooseUs } from "@/components/landing/WhyChooseUs";
 import { CTASection } from "@/components/landing/CTASection";
+import { CeoSection } from "@/components/landing/CeoSection";
 import { Footer } from "@/components/landing/Footer";
 
 export const Route = createFileRoute("/")({
@@ -83,6 +84,7 @@ function Index() {
         <Projects />
         <ProjectsMobile />
         <WhyChooseUs />
+        <CeoSection />
         <CTASection />
       </main>
       <Footer />

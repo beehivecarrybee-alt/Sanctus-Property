@@ -94,11 +94,6 @@ export function Hero({ images }: Props) {
                 Start your project <span aria-hidden>↗</span>
               </a>
             </div>
-            <div className="mt-10 flex items-center justify-center md:justify-start gap-8 text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              <div><div className="font-display text-xl md:text-2xl text-foreground normal-case tracking-normal">120+</div>projects</div>
-              <div><div className="font-display text-xl md:text-2xl text-foreground normal-case tracking-normal">2026</div>Launch</div>
-              <div><div className="font-display text-xl md:text-2xl text-foreground normal-case tracking-normal">A+</div>certified</div>
-            </div>
           </div>
 
           {/* Canvas */}

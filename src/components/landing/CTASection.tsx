@@ -22,11 +22,11 @@ export function CTASection() {
               guide you honestly from concept through to keys.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="mailto:hello@sanctusproperty.com" className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-gold)] text-ink px-7 py-4 text-sm hover:bg-background hover:text-ink transition-colors">
-                hello@sanctusproperty.com →
+              <a href="mailto:sanctuspropertyopc@gmail.com" className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-gold)] text-ink px-7 py-4 text-sm hover:bg-background hover:text-ink transition-colors">
+                sanctuspropertyopc@gmail.com →
               </a>
-              <a href="tel:+0000000000" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-7 py-4 text-sm hover:bg-white/10 transition-colors">
-                +00 0000 0000
+              <a href="tel:+917845840069" className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-7 py-4 text-sm hover:bg-white/10 transition-colors">
+                +91 78458 40069
               </a>
             </div>
           </div>

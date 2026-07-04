@@ -1,5 +1,6 @@
-import ecLogo from "@/assets/logofor E and C_.jpg";
+import ecLogo from "@/assets/logofor E and C_.png";
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { EnquiryDialog } from "./EnquiryDialog";
 
 const LINKS = [
@@ -9,6 +10,8 @@ const LINKS = [
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
+
+const CEO_LINK = { label: "Our CEO", to: "/ceo" } as const;
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -35,12 +38,12 @@ export function Navbar() {
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-10 h-20 flex items-center justify-between">
           <a href="#home" className="flex items-center gap-3 group">
-            <div className="h-11 w-11 rounded-full overflow-hidden border border-[var(--color-gold)]/30 shadow-sm">
-              <img src={ecLogo} alt="Sanctus Property" className="h-full w-full object-cover" />
+            <div className="h-11 w-auto">
+              <img src={ecLogo} alt="Sanctus Property" className="h-full w-auto object-contain" />
             </div>
             <div className="leading-tight">
               <div className="font-display text-lg tracking-tight">Sanctus Property</div>
-              <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground select-none">Real Estate · Property</div>
+              <div className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground select-none">Real Estate & Construction Company</div>
             </div>
           </a>
 
@@ -54,6 +57,12 @@ export function Navbar() {
                 {l.label}
               </a>
             ))}
+            <Link
+              to={CEO_LINK.to}
+              className="text-sm text-foreground/80 hover:text-foreground transition-colors relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-[var(--color-gold)] after:transition-all hover:after:w-full"
+            >
+              {CEO_LINK.label}
+            </Link>
           </nav>
 
           {/* Desktop — Enquiry button */}
@@ -84,6 +93,13 @@ export function Navbar() {
                   {l.label}
                 </a>
               ))}
+              <Link
+                to={CEO_LINK.to}
+                onClick={() => setOpen(false)}
+                className="text-base"
+              >
+                {CEO_LINK.label}
+              </Link>
               {/* Mobile — Enquiry button */}
               <button
                 onClick={() => { setOpen(false); setDialogOpen(true); }}

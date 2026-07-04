@@ -10,7 +10,7 @@ export type EnquiryData = {
 };
 
 // Where enquiry notifications are delivered.
-const ADMIN_RECIPIENTS = "ravishangar130@gmail.com, beehivecarrybee@gmail.com";
+const ADMIN_RECIPIENTS = "sanctuspropertyopc@gmail.com";
 
 // Server function invoked directly from the client:
 //   await submitEnquiry({ data: form })

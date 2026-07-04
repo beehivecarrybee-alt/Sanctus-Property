@@ -10,7 +10,7 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import ecLogo from "../assets/logofor E and C_.jpg?url";
+import ecLogo from "../assets/logofor E and C_.png?url";
 
 import { GlitterCursor } from "../components/ui/GlitterCursor";
 
