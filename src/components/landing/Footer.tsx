@@ -41,7 +41,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 py-6 flex flex-col md:flex-row justify-between gap-3 text-xs text-muted-foreground">
-          <span>© {new Date().getFullYear()} Sanctus Property. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Sanctus Property OPC Pvt Ltd. All rights reserved.</span>
           <span>Crafted with care in Sanctus Property.</span>
         </div>
       </div>

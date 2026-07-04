@@ -14,10 +14,10 @@ import { Footer } from "@/components/landing/Footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sanctus Property — Real Estate & Property Studio" },
-      { name: "description", content: "Sanctus Property designs, develops and delivers residential and commercial landmarks — architecture, development and construction under one roof." },
-      { property: "og:title", content: "Sanctus Property — Real Estate & Property Studio" },
-      { property: "og:description", content: "Premium property design and development. Sanctus Property, since 2026." },
+      { title: "Sanctus Property OPC Pvt Ltd — Real Estate & Property Studio" },
+      { name: "description", content: "Sanctus Property OPC Pvt Ltd designs, develops and delivers residential and commercial landmarks — architecture, development and construction under one roof." },
+      { property: "og:title", content: "Sanctus Property OPC Pvt Ltd — Real Estate & Property Studio" },
+      { property: "og:description", content: "Premium property design and development. Sanctus Property OPC Pvt Ltd, since 2026." },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

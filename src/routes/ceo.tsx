@@ -5,11 +5,11 @@ import ceoPortrait from "@/assets/photo/c2.png";
 export const Route = createFileRoute("/ceo")({
   head: () => ({
     meta: [
-      { title: "Founder & CEO | Sanctus Property" },
+      { title: "A. Charles Sandeep — Founder & CEO | Sanctus Property OPC Pvt Ltd" },
       {
         name: "description",
         content:
-          "Meet the visionary behind Sanctus Property — our Founder & CEO. Learn about his philosophy, milestones, and the mission driving Sanctus Property.",
+          "Meet the visionary behind Sanctus Property OPC Pvt Ltd — A. Charles Sandeep, Founder & CEO. Learn about his philosophy, milestones, and the mission driving Sanctus Property OPC Pvt Ltd.",
       },
     ],
     links: [
@@ -193,7 +193,7 @@ function CeoPage() {
               {/* Decorative silhouette / avatar */}
               <img
                 src={ceoPortrait}
-                alt="Founder & CEO, Sanctus Property"
+                alt="A. Charles Sandeep — Founder & CEO, Sanctus Property"
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
               />
 
@@ -223,6 +223,15 @@ function CeoPage() {
                 }}
               >
                 Founder &amp; Chief Executive Officer
+              </div>
+              <div
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "1.5rem",
+                  letterSpacing: "-0.02em",
+                }}
+              >
+                A. Charles Sandeep
               </div>
             </div>
           </div>
@@ -479,7 +488,7 @@ function CeoPage() {
               color: "var(--color-muted-foreground)",
             }}
           >
-            — Founder &amp; CEO, Sanctus Property
+            — A. Charles Sandeep, Founder &amp; CEO, Sanctus Property
           </footer>
         </blockquote>
       </section>
@@ -568,7 +577,7 @@ function CeoPage() {
           margin: "0 auto",
         }}
       >
-        <span>© {new Date().getFullYear()} Sanctus Property. All rights reserved.</span>
+        <span>© {new Date().getFullYear()} Sanctus Property OPC Pvt Ltd. All rights reserved.</span>
         <Link
           to="/"
           style={{ color: "inherit", textDecoration: "none" }}
