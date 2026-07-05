@@ -45,7 +45,7 @@ const SERVICES = [
 
 export function Services() {
   return (
-    <section id="services" className="relative py-32 md:py-40 bg-background">
+    <section id="services" className="relative py-16 md:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20">
           <div>

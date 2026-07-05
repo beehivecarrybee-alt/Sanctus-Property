@@ -6,7 +6,7 @@ export function CeoSection() {
     <section
       id="ceo"
       style={{
-        padding: "7rem 1.5rem",
+        padding: "4rem 1.5rem",
         background: "var(--color-secondary)",
       }}
     >

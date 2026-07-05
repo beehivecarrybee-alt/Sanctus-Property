@@ -1,7 +1,7 @@
 const STATS = [
   { n: "150+", l: "Upcoming builds" },
   { n: "2026", l: "Sanctus Era" },
-  { n: "₪5.0B", l: "Projected value" },
+  { n: "₹500Cr+", l: "Projected value" },
   { n: "Pure", l: "Architecture" },
 ];
 
@@ -13,7 +13,7 @@ const REASONS = [
 
 export function WhyChooseUs() {
   return (
-    <section id="about" className="relative py-32 md:py-40">
+    <section id="about" className="relative py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 grid md:grid-cols-12 gap-12">
         <div className="md:col-span-5">
           <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6">
