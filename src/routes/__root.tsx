@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import ecLogo from "../assets/logofor E and C_.png?url";
 
 import { GlitterCursor } from "../components/ui/GlitterCursor";
+import { PwaPrompts } from "../components/pwa/PwaPrompts";
 
 function NotFoundComponent() {
   return (
@@ -129,22 +130,11 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
-  useEffect(() => {
-    if (!import.meta.env.PROD) return;
-    if (!("serviceWorker" in navigator)) return;
-    try {
-      navigator.serviceWorker.register("/sw.js").catch((err) => {
-        console.error("Service worker registration failed", err);
-      });
-    } catch (err) {
-      console.error("Service worker registration failed", err);
-    }
-  }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <PwaPrompts />
     </QueryClientProvider>
   );
 }

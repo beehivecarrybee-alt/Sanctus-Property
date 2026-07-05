@@ -67,9 +67,9 @@ export function Hero({ images }: Props) {
   }, [images]);
 
   return (
-    <section ref={sectionRef} id="home" className="relative" style={{ height: "350vh" }}>
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <div className="mx-auto max-w-7xl h-full px-6 lg:px-10 grid md:grid-cols-12 gap-8 content-start items-start md:items-center pt-20 md:pt-24 pb-8">
+    <section ref={sectionRef} id="home" className="relative h-auto md:h-[350vh]">
+      <div className="relative md:sticky md:top-0 h-auto md:h-screen w-full overflow-hidden">
+        <div className="mx-auto max-w-7xl md:h-full px-6 lg:px-10 grid md:grid-cols-12 gap-8 content-start items-start md:items-center pt-20 md:pt-24 pb-8">
 
           {/* Copy */}
           <div className="md:col-span-5 z-10 order-2 md:order-1 text-center md:text-left">
@@ -157,7 +157,7 @@ export function Hero({ images }: Props) {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[10px] uppercase tracking-[0.4em] text-muted-foreground">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-[10px] uppercase tracking-[0.4em] text-muted-foreground">
           <span>Scroll</span>
           <span className="h-8 w-px bg-foreground/40 animate-pulse" />
         </div>

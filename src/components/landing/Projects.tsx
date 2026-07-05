@@ -96,13 +96,13 @@ export function Projects() {
             style={{ transition: "transform 0.05s linear" }}
           >
             {PROJECTS.map((p, i) => (
-              <article key={p.title} className="shrink-0 w-[min(520px,78vw)] group">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-muted">
+              <article key={p.title} className="shrink-0 group">
+                <div className="relative w-fit overflow-hidden rounded-xl bg-muted h-[52vh] min-h-[320px] max-h-[540px]">
                   <img
                     src={p.img}
                     alt={p.title}
                     loading="lazy"
-                    className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                    className="h-full w-auto object-contain transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.3em] text-white/90 bg-black/30 backdrop-blur px-3 py-1.5 rounded-full">
                     {String(i + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
@@ -187,8 +187,8 @@ export function ProjectsMobile() {
       <div className="space-y-10">
         {PROJECTS.map((p, i) => (
           <article key={p.title}>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-xl bg-muted">
-              <img src={p.img} alt={p.title} loading="lazy" className="absolute inset-0 h-full w-full object-contain" />
+            <div className="relative overflow-hidden rounded-xl bg-muted">
+              <img src={p.img} alt={p.title} loading="lazy" className="w-full h-auto" />
               <div className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.3em] text-white/90 bg-black/30 backdrop-blur px-3 py-1.5 rounded-full">
                 {String(i + 1).padStart(2, "0")}
               </div>
