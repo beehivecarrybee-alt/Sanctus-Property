@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import ecLogo from "@/assets/logofor E and C_.png";
 import ceoPortrait from "@/assets/photo/c2.png";
+import { SITE_URL, personJsonLd, jsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/ceo")({
   head: () => ({
@@ -11,6 +12,8 @@ export const Route = createFileRoute("/ceo")({
         content:
           "Meet the visionary behind Sanctus Property OPC Pvt Ltd — A. Charles Sandeep, Founder & CEO. Learn about his philosophy, milestones, and the mission driving Sanctus Property OPC Pvt Ltd.",
       },
+      { property: "og:title", content: "A. Charles Sandeep — Founder & CEO | Sanctus Property OPC Pvt Ltd" },
+      { property: "og:url", content: SITE_URL + "/ceo" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -23,6 +26,10 @@ export const Route = createFileRoute("/ceo")({
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap",
       },
+      { rel: "canonical", href: SITE_URL + "/ceo" },
+    ],
+    scripts: [
+      { type: "application/ld+json", children: jsonLd(personJsonLd) },
     ],
   }),
   component: CeoPage,

@@ -14,6 +14,7 @@ import ecLogo from "../assets/logofor E and C_.png?url";
 
 import { GlitterCursor } from "../components/ui/GlitterCursor";
 import { PwaPrompts } from "../components/pwa/PwaPrompts";
+import { SITE_URL, localBusinessJsonLd, websiteJsonLd, jsonLd } from "../lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -80,13 +81,29 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sanctus Property OPC Pvt Ltd — Real Estate & Property Studio" },
-      { name: "description", content: "Sanctus Property OPC Pvt Ltd designs, develops and delivers residential and commercial landmarks — architecture, development and construction under one roof." },
-      { name: "author", content: "Sanctus Property OPC Pvt Ltd 2026" },
-      { property: "og:title", content: "Sanctus Property OPC Pvt Ltd — Real Estate & Property Studio" },
-      { property: "og:description", content: "Sanctus Property OPC Pvt Ltd designs, develops and delivers residential and commercial landmarks." },
+      { title: "Sanctus Property OPC Pvt Ltd | Construction & Real Estate Company in Coimbatore" },
+      { name: "description", content: "Trusted construction & real-estate company in Coimbatore, Tamil Nadu — residential & commercial construction, approved plots, ready-to-move & resale villas, and electrical & plumbing services." },
+      { name: "keywords", content: "construction company in Coimbatore, best construction company in Coimbatore, real estate company in Coimbatore, best real estate in Coimbatore, builders in Coimbatore, residential construction Coimbatore, commercial construction Coimbatore, plots in Coimbatore, villas in Coimbatore, ready to move villas Coimbatore, resale villas Coimbatore, electrical and plumbing Coimbatore, Sanctus Property" },
+      { name: "robots", content: "index, follow, max-image-preview:large" },
+      { name: "author", content: "Sanctus Property OPC Pvt Ltd" },
+      { property: "og:title", content: "Sanctus Property OPC Pvt Ltd | Construction & Real Estate Company in Coimbatore" },
+      { property: "og:description", content: "Trusted construction & real-estate company in Coimbatore, Tamil Nadu — residential & commercial construction, approved plots, ready-to-move & resale villas, and electrical & plumbing services." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:site_name", content: "Sanctus Property" },
+      { property: "og:locale", content: "en_IN" },
+      { property: "og:image", content: SITE_URL + "/og-image.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Sanctus Property — construction & real estate in Coimbatore" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Sanctus Property OPC Pvt Ltd | Construction & Real Estate Company in Coimbatore" },
+      { name: "twitter:description", content: "Trusted construction & real-estate company in Coimbatore, Tamil Nadu — residential & commercial construction, approved plots, ready-to-move & resale villas, and electrical & plumbing services." },
+      { name: "twitter:image", content: SITE_URL + "/og-image.jpg" },
+      { name: "geo.region", content: "IN-TN" },
+      { name: "geo.placename", content: "Coimbatore" },
+      { name: "geo.position", content: "11.0168;76.9558" },
+      { name: "ICBM", content: "11.0168, 76.9558" },
       { name: "theme-color", content: "#17130F" },
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
@@ -104,6 +121,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "manifest", href: "/manifest.json" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+    ],
+    scripts: [
+      { type: "application/ld+json", children: jsonLd(localBusinessJsonLd) },
+      { type: "application/ld+json", children: jsonLd(websiteJsonLd) },
     ],
   }),
   shellComponent: RootShell,

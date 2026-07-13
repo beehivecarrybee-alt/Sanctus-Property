@@ -15,7 +15,7 @@ export function Footer() {
             </div>
           </div>
           <p className="text-sm text-muted-foreground max-w-sm">
-            Designing and delivering landmark properties since 2026.
+            Coimbatore's trusted construction & real-estate company — designing and delivering landmark properties since 2026.
           </p>
         </div>
         <div className="md:col-span-2">
