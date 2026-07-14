@@ -27,7 +27,9 @@ export function Footer() {
         <div className="md:col-span-2">
           <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">Work</div>
           <ul className="space-y-2 text-sm">
-            <li>Residential</li><li>Commercial</li><li>Construction</li>
+            <li><a href="/construction-company-in-coimbatore" className="hover:text-[var(--color-gold)] transition-colors">Construction in Coimbatore</a></li>
+            <li><a href="/real-estate-company-in-coimbatore" className="hover:text-[var(--color-gold)] transition-colors">Real Estate in Coimbatore</a></li>
+            <li><a href="/villas-and-plots-in-coimbatore" className="hover:text-[var(--color-gold)] transition-colors">Villas &amp; Plots</a></li>
           </ul>
         </div>
         <div className="md:col-span-3">

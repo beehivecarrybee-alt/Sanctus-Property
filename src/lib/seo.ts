@@ -122,3 +122,34 @@ export const faqJsonLd = {
 };
 
 export const jsonLd = (obj: object) => JSON.stringify(obj);
+
+export const breadcrumbJsonLd = (items: { name: string; url: string }[]) => ({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: items.map((it, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: it.name,
+    item: it.url,
+  })),
+});
+
+export const servicePageJsonLd = (opts: { name: string; description: string; url: string }) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: opts.name,
+  description: opts.description,
+  url: opts.url,
+  provider: {
+    "@type": "Organization",
+    name: "Sanctus Property OPC Pvt Ltd",
+    url: SITE_URL,
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Coimbatore",
+  },
+});
+
+// IndexNow key — the matching key file lives at public/<key>.txt
+export const INDEXNOW_KEY = "97b595a943641bc93284b0b784dbda52";

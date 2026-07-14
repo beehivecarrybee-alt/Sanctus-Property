@@ -9,9 +9,30 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VillasAndPlotsInCoimbatoreRouteImport } from './routes/villas-and-plots-in-coimbatore'
+import { Route as RealEstateCompanyInCoimbatoreRouteImport } from './routes/real-estate-company-in-coimbatore'
+import { Route as ConstructionCompanyInCoimbatoreRouteImport } from './routes/construction-company-in-coimbatore'
 import { Route as CeoRouteImport } from './routes/ceo'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VillasAndPlotsInCoimbatoreRoute =
+  VillasAndPlotsInCoimbatoreRouteImport.update({
+    id: '/villas-and-plots-in-coimbatore',
+    path: '/villas-and-plots-in-coimbatore',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const RealEstateCompanyInCoimbatoreRoute =
+  RealEstateCompanyInCoimbatoreRouteImport.update({
+    id: '/real-estate-company-in-coimbatore',
+    path: '/real-estate-company-in-coimbatore',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ConstructionCompanyInCoimbatoreRoute =
+  ConstructionCompanyInCoimbatoreRouteImport.update({
+    id: '/construction-company-in-coimbatore',
+    path: '/construction-company-in-coimbatore',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const CeoRoute = CeoRouteImport.update({
   id: '/ceo',
   path: '/ceo',
@@ -26,31 +47,80 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ceo': typeof CeoRoute
+  '/construction-company-in-coimbatore': typeof ConstructionCompanyInCoimbatoreRoute
+  '/real-estate-company-in-coimbatore': typeof RealEstateCompanyInCoimbatoreRoute
+  '/villas-and-plots-in-coimbatore': typeof VillasAndPlotsInCoimbatoreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ceo': typeof CeoRoute
+  '/construction-company-in-coimbatore': typeof ConstructionCompanyInCoimbatoreRoute
+  '/real-estate-company-in-coimbatore': typeof RealEstateCompanyInCoimbatoreRoute
+  '/villas-and-plots-in-coimbatore': typeof VillasAndPlotsInCoimbatoreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/ceo': typeof CeoRoute
+  '/construction-company-in-coimbatore': typeof ConstructionCompanyInCoimbatoreRoute
+  '/real-estate-company-in-coimbatore': typeof RealEstateCompanyInCoimbatoreRoute
+  '/villas-and-plots-in-coimbatore': typeof VillasAndPlotsInCoimbatoreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ceo'
+  fullPaths:
+    | '/'
+    | '/ceo'
+    | '/construction-company-in-coimbatore'
+    | '/real-estate-company-in-coimbatore'
+    | '/villas-and-plots-in-coimbatore'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ceo'
-  id: '__root__' | '/' | '/ceo'
+  to:
+    | '/'
+    | '/ceo'
+    | '/construction-company-in-coimbatore'
+    | '/real-estate-company-in-coimbatore'
+    | '/villas-and-plots-in-coimbatore'
+  id:
+    | '__root__'
+    | '/'
+    | '/ceo'
+    | '/construction-company-in-coimbatore'
+    | '/real-estate-company-in-coimbatore'
+    | '/villas-and-plots-in-coimbatore'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CeoRoute: typeof CeoRoute
+  ConstructionCompanyInCoimbatoreRoute: typeof ConstructionCompanyInCoimbatoreRoute
+  RealEstateCompanyInCoimbatoreRoute: typeof RealEstateCompanyInCoimbatoreRoute
+  VillasAndPlotsInCoimbatoreRoute: typeof VillasAndPlotsInCoimbatoreRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/villas-and-plots-in-coimbatore': {
+      id: '/villas-and-plots-in-coimbatore'
+      path: '/villas-and-plots-in-coimbatore'
+      fullPath: '/villas-and-plots-in-coimbatore'
+      preLoaderRoute: typeof VillasAndPlotsInCoimbatoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/real-estate-company-in-coimbatore': {
+      id: '/real-estate-company-in-coimbatore'
+      path: '/real-estate-company-in-coimbatore'
+      fullPath: '/real-estate-company-in-coimbatore'
+      preLoaderRoute: typeof RealEstateCompanyInCoimbatoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/construction-company-in-coimbatore': {
+      id: '/construction-company-in-coimbatore'
+      path: '/construction-company-in-coimbatore'
+      fullPath: '/construction-company-in-coimbatore'
+      preLoaderRoute: typeof ConstructionCompanyInCoimbatoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/ceo': {
       id: '/ceo'
       path: '/ceo'
@@ -71,6 +141,9 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CeoRoute: CeoRoute,
+  ConstructionCompanyInCoimbatoreRoute: ConstructionCompanyInCoimbatoreRoute,
+  RealEstateCompanyInCoimbatoreRoute: RealEstateCompanyInCoimbatoreRoute,
+  VillasAndPlotsInCoimbatoreRoute: VillasAndPlotsInCoimbatoreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
