@@ -35,7 +35,6 @@ export function Projects() {
     if (!outer || !track) return;
 
     const mm = window.matchMedia("(min-width: 768px)");
-    if (!mm.matches) return;
 
     const update = () => {
       rafRef.current = null;
@@ -52,13 +51,36 @@ export function Projects() {
       if (rafRef.current == null) rafRef.current = requestAnimationFrame(update);
     };
 
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
+    const start = () => {
+      update();
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+    };
+
+    const stop = () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null;
+      }
+      track.style.transform = "";
+    };
+
+    const onChange = (e: MediaQueryListEvent) => {
+      if (e.matches) {
+        start();
+      } else {
+        stop();
+      }
+    };
+
+    if (mm.matches) start();
+    mm.addEventListener("change", onChange);
+
+    return () => {
+      mm.removeEventListener("change", onChange);
+      stop();
     };
   }, []);
 

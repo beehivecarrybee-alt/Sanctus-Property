@@ -9,6 +9,8 @@ export function GlitterCursor() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    if (!window.matchMedia("(pointer: fine)").matches) return;
+
     let particles: Particle[] = [];
     let mouse = { x: 0, y: 0 };
     let isActive = false;

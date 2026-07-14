@@ -49,7 +49,7 @@ export function WhyChooseUs() {
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-border border border-border rounded-xl overflow-hidden">
             {STATS.map((s) => (
               <div key={s.l} className="bg-background p-6">
-                <div className="font-display text-3xl md:text-4xl">{s.n}</div>
+                <div className="font-display text-2xl md:text-4xl">{s.n}</div>
                 <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">{s.l}</div>
               </div>
             ))}
