@@ -22,17 +22,24 @@ const PROJECTS = [
   { title: "Builder Partnership Meet", type: "Recognition · G Square Group", year: "2026", img: p9 },
 ];
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function Projects() {
   const outerRef = useRef<HTMLElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
   const rafRef = useRef<number | null>(null);
+
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+  const atStartRef = useRef(true);
+  const atEndRef = useRef(false);
 
   useEffect(() => {
     const outer = outerRef.current;
     const track = trackRef.current;
-    if (!outer || !track) return;
+    const wrapper = wrapperRef.current;
+    if (!outer || !track || !wrapper) return;
 
     const mm = window.matchMedia("(min-width: 768px)");
 
@@ -45,21 +52,76 @@ export function Projects() {
       const progress = scrollRange > 0 ? scrolled / scrollRange : 0;
       const maxX = track.scrollWidth - track.offsetWidth;
       track.style.transform = `translateX(-${progress * maxX}px)`;
+
+      const nextAtStart = scrolled <= 0;
+      const nextAtEnd = scrolled >= scrollRange;
+      if (nextAtStart !== atStartRef.current) {
+        atStartRef.current = nextAtStart;
+        setAtStart(nextAtStart);
+      }
+      if (nextAtEnd !== atEndRef.current) {
+        atEndRef.current = nextAtEnd;
+        setAtEnd(nextAtEnd);
+      }
     };
 
     const onScroll = () => {
       if (rafRef.current == null) rafRef.current = requestAnimationFrame(update);
     };
 
+    const dragRef = { dragging: false, lastX: 0, ratio: 0, pointerId: 0 };
+
+    const onPointerDown = (e: PointerEvent) => {
+      const vh = window.innerHeight;
+      const scrollRange = outer.offsetHeight - vh;
+      const maxX = track.scrollWidth - track.offsetWidth;
+      dragRef.dragging = true;
+      dragRef.lastX = e.clientX;
+      dragRef.ratio = maxX > 0 ? scrollRange / maxX : 0;
+      dragRef.pointerId = e.pointerId;
+      try {
+        (e.target as HTMLElement).setPointerCapture(e.pointerId);
+      } catch {
+        /* no-op: pointer capture may already be released/unsupported */
+      }
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (!dragRef.dragging) return;
+      const deltaX = dragRef.lastX - e.clientX;
+      if (Math.abs(deltaX) < 1) return;
+      e.preventDefault();
+      window.scrollBy({ top: deltaX * dragRef.ratio });
+      dragRef.lastX = e.clientX;
+    };
+
+    const onPointerUp = (e: PointerEvent) => {
+      dragRef.dragging = false;
+      try {
+        (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+      } catch {
+        /* no-op: pointer capture may already be released/unsupported */
+      }
+    };
+
     const start = () => {
       update();
       window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("resize", onScroll);
+      wrapper.addEventListener("pointerdown", onPointerDown);
+      wrapper.addEventListener("pointermove", onPointerMove, { passive: false });
+      wrapper.addEventListener("pointerup", onPointerUp);
+      wrapper.addEventListener("pointercancel", onPointerUp);
     };
 
     const stop = () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
+      wrapper.removeEventListener("pointerdown", onPointerDown);
+      wrapper.removeEventListener("pointermove", onPointerMove);
+      wrapper.removeEventListener("pointerup", onPointerUp);
+      wrapper.removeEventListener("pointercancel", onPointerUp);
+      dragRef.dragging = false;
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
@@ -84,6 +146,21 @@ export function Projects() {
     };
   }, []);
 
+  const stepScroll = (direction: 1 | -1) => {
+    const outer = outerRef.current;
+    const track = trackRef.current;
+    if (!outer || !track) return;
+    const vh = window.innerHeight;
+    const scrollRange = outer.offsetHeight - vh;
+    const maxX = track.scrollWidth - track.offsetWidth;
+    if (maxX <= 0 || scrollRange <= 0) return;
+    const ratio = scrollRange / maxX;
+    const firstCard = track.children[0] as HTMLElement | undefined;
+    const cardWidth = firstCard?.getBoundingClientRect().width ?? 0;
+    const stepPixels = cardWidth + 24;
+    window.scrollBy({ top: direction * stepPixels * ratio, behavior: "smooth" });
+  };
+
   const scrollMultiplier = PROJECTS.length + 0.5;
 
   return (
@@ -105,13 +182,43 @@ export function Projects() {
               Our <em className="italic text-[var(--color-gold)]">portfolio</em>
             </h2>
           </div>
-          <a href="#contact" className="text-sm hover:text-[var(--color-gold)] transition">
-            All work →
-          </a>
+          <div className="flex items-center gap-5">
+            <a href="#contact" className="text-sm hover:text-[var(--color-gold)] transition">
+              All work →
+            </a>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => stepScroll(-1)}
+                disabled={atStart}
+                aria-label="Previous project"
+                className="h-10 w-10 rounded-full flex items-center justify-center text-white bg-black/30 backdrop-blur hover:bg-black/50 transition-colors disabled:opacity-30 disabled:pointer-events-none"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M15 6l-6 6 6 6" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={() => stepScroll(1)}
+                disabled={atEnd}
+                aria-label="Next project"
+                className="h-10 w-10 rounded-full flex items-center justify-center text-white bg-black/30 backdrop-blur hover:bg-black/50 transition-colors disabled:opacity-30 disabled:pointer-events-none"
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Horizontal scrolling track */}
-        <div className="overflow-hidden">
+        <div
+          ref={wrapperRef}
+          className="overflow-hidden cursor-grab active:cursor-grabbing"
+          style={{ touchAction: "pan-y" }}
+        >
           <div
             ref={trackRef}
             className="flex gap-6 px-6 lg:px-10 will-change-transform"
