@@ -10,7 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import ecLogo from "../assets/logofor E and C_.png?url";
 
 import { GlitterCursor } from "../components/ui/GlitterCursor";
 import { PwaPrompts } from "../components/pwa/PwaPrompts";
@@ -117,10 +116,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: appCss,
       },
-      {
-        rel: "icon",
-        href: ecLogo,
-      },
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      { rel: "icon", type: "image/png", sizes: "48x48", href: "/favicon-48x48.png" },
+      { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" },
+      { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" },
       { rel: "manifest", href: "/manifest.json" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
     ],
