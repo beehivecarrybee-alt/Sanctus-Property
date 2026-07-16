@@ -231,7 +231,9 @@ export function Projects() {
                     src={p.img}
                     alt={`${p.title} — ${p.type} | Sanctus Property, Coimbatore`}
                     loading="lazy"
-                    className="h-full w-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                    draggable={false}
+                    className="h-full w-auto object-contain transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none"
+                    style={{ WebkitUserDrag: "none" } as React.CSSProperties}
                   />
                   <div className="absolute top-4 left-4 text-[10px] uppercase tracking-[0.3em] text-white/90 bg-black/30 backdrop-blur px-3 py-1.5 rounded-full">
                     {String(i + 1).padStart(2, "0")} / {String(PROJECTS.length).padStart(2, "0")}
